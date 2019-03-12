@@ -6,9 +6,10 @@ class TestGame(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        global x, y
+        global x, y, z
         x = main.Human(19, "Adam", "male", "Manuel", "Celeste")
         y = main.Human(19, "Eve", "female", "Dad", "Mum")
+        z = main.Game()
 
     def testHumanCreation(self):
         self.assertEqual(x.name,"Adam")
@@ -27,7 +28,7 @@ class TestGame(unittest.TestCase):
         y.procreate()
         self.assertEqual(x.children, y.children)
         for child in x.children:
-            print(child.name)
+            print("Child: " + child.name)
             self.assertEqual(child.dad,x)
             self.assertEqual(child.mum,y)
             self.assertEqual(child.age,0)
@@ -37,8 +38,7 @@ class TestGame(unittest.TestCase):
                 print('>>>>'+i.name)
 
     def testGamePopulation(self):
-        z= main.Game()
         x.marry()
         x.procreate()
         self.assertEqual(z.getPopulationValue(),3)
-        print(z.getPopulation())
+

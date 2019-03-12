@@ -10,19 +10,22 @@ class Game:
         pass
 
     def getPopulation(self):
+        output = []
         for human in self.population:
-            print(human.name)
-            print('>Age: '+str(human.age))
-            print('>Gender: '+human.gender)
+            output.append(human.name +'\n')
+            output.append('>Age: '+str(human.age)+'\n')
+            output.append('>Gender: '+human.gender+'\n')
             if human.married != None:
-                print('>Married to: '+human.married.name)
+                output.append('>Married to: '+human.married.name+'\n')
             try:
-                print('>Mother: '+human.mum)
-                print('>Father: '+human.dad)
+                output.append('>Mother: '+human.mum+'\n')
+                output.append('>Father: '+human.dad+'\n')
             except:
-                print('>Mother: '+human.mum.name)
-                print('>Father: '+human.dad.name)
-            print('\n')
+                output.append('>Mother: '+human.mum.name+'\n')
+                output.append('>Father: '+human.dad.name+'\n')
+            output.append('\n')
+        print(''.join(output))
+        return output
 
 
     def getPopulationValue(self):
