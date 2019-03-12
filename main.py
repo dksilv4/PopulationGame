@@ -20,7 +20,7 @@ class Game:
                 print('>>>>'+human.mum)
                 print('>>>>'+human.dad)
             except:
-                print('>>>>'+human.dad.name)
+                print('>>>>'+human.mum.name)
                 print('>>>>'+human.dad.name)
 
 
