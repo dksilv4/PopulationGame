@@ -2,13 +2,20 @@ import datetime
 import random
 import time
 import sqlite3
+from sqlite3 import Error
 
 class Login:
     username = None
     password = None
 
     def createConnection(self):
-        conn = sqlite3.connect(r"users.db")
+        try:
+            conn = sqlite3.connect(r"/db/users.db")
+            return conn
+        except Error as e:
+            print(e)
+
+        return None
 
 class Game:
     population = []
@@ -167,7 +174,7 @@ def startGame():
     global gameRunning
     gameRunning = True
     game = Login()
-
+    game.createConnection()
 
 def populationIncrease(gameRunning, populationSize, populationMultiplier):
     for i in range(0, 100):
