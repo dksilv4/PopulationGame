@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="228fac42-ce22-4e3e-987c-3635d4be68d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/db/users.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="228fac42-ce22-4e3e-987c-3635d4be68d4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +13,7 @@
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testHumanProcreate.coverage" NAME="Unittests for test.TestGame.testHumanProcreate Coverage Results" MODIFIED="1552422828473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testHumanCreation.coverage" NAME="Unittests for test.TestGame.testHumanCreation Coverage Results" MODIFIED="1552422797780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_in_test_py.coverage" NAME="Unittests in test.py Coverage Results" MODIFIED="1552427090294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/Population_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1552428901400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
+    <SUITE FILE_PATH="coverage/Population_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1552429249399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -60,13 +55,13 @@
         <counts>
           <entry key="md" value="7" />
           <entry key="py" value="600" />
-          <entry key="txt" value="280" />
+          <entry key="txt" value="328" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="7" />
-          <entry key="PLAIN_TEXT" value="280" />
+          <entry key="PLAIN_TEXT" value="328" />
           <entry key="Python" value="600" />
         </counts>
       </usages-collector>
@@ -89,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
                 <marker date="1552428901394" expanded="true" signature="96:329" ph="..." />
@@ -360,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552427143865</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Connecting a database to make a log in system.">
+      <created>1552428991343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1552428991343</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -433,7 +435,8 @@
     <MESSAGE value="Made a setup class method on the test class just to make it easier and make it more robust to test the program as i dont have to make new objects everytime i run a single test." />
     <MESSAGE value="Changed some format when displaying population." />
     <MESSAGE value="Changed some format when displaying population.&#10;Added some other stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed some format when displaying population.&#10;Added some other stuff." />
+    <MESSAGE value="Connecting a database to make a log in system." />
+    <option name="LAST_COMMIT_MESSAGE" value="Connecting a database to make a log in system." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
@@ -475,8 +478,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
             <marker date="1552428901394" expanded="true" signature="96:329" ph="..." />

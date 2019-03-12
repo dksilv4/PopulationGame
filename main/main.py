@@ -10,7 +10,7 @@ class Login:
 
     def createConnection(self):
         try:
-            conn = sqlite3.connect(r"/db/users.db")
+            conn = sqlite3.connect(r"../db/users.db")
             return conn
         except Error as e:
             print(e)
