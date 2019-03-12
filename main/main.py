@@ -1,7 +1,14 @@
 import datetime
 import random
 import time
+import sqlite3
 
+class Login:
+    username = None
+    password = None
+
+    def createConnection(self):
+        conn = sqlite3.connect(r"users.db")
 
 class Game:
     population = []
@@ -159,8 +166,7 @@ class Human:
 def startGame():
     global gameRunning
     gameRunning = True
-    game = Game()
-    game.getPopulation()
+    game = Login()
 
 
 def populationIncrease(gameRunning, populationSize, populationMultiplier):
