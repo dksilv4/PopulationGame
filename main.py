@@ -17,7 +17,7 @@ class Game:
             if human.married != None:
                 print('>>>>'+human.married.name)
             try:
-                print'>>>>'+(human.mum)
+                print('>>>>'+human.mum)
                 print('>>>>'+human.dad)
             except:
                 print('>>>>'+human.mum.name)
