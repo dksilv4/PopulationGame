@@ -14,7 +14,6 @@ class Login:
             return conn
         except Error as e:
             print(e)
-
         return None
 
 class Game:
@@ -77,7 +76,9 @@ class Game:
 
 
 class Human:
-    name = ""
+    nameFirst = ""
+    nameMiddle = ""
+    nameLast = ""
     age = None
     gender = None
     dob = None
@@ -160,8 +161,8 @@ class Human:
     @staticmethod
     def newName(gender):
         gender = gender
-        nameMale = ['Diogo', "Miguel"]
-        nameFemale = ['Nataly', 'Maria']
+        nameMale = ['Diogo', 'Miguel', 'Marcel', 'Konstantinos']
+        nameFemale = ['Nataly', 'Maria', 'Diana']
         if gender == 'male':
             x = random.randint(0, len(nameMale) - 1)
             return nameMale[x]
