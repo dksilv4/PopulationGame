@@ -2,19 +2,50 @@ import datetime
 import random
 import time
 import sqlite3
+import os
 from sqlite3 import Error
 
+
 class Login:
+    con = None
+    pCon = None
     username = None
     password = None
+    populationFile = r"../db/" + str(username) + ".db"
+
+    def __init__(self):
+        self.con = self.createConnection()
 
     def createConnection(self):
         try:
             conn = sqlite3.connect(r"../db/users.db")
-            return conn
+            con = conn.cursor()
+            return con
         except Error as e:
             print(e)
         return None
+
+    def inputCredentials(self):
+        self.username = input("Please enter your username: ")
+        self.password = input("Please enter your password: ")
+        self.checkLoginCredentials(self.username, self.password)
+
+    def checkLoginCredentials(self, username, password):
+        try:
+            results = self.con.execute("SELECT passwordHash FROM users WHERE username=?", (username,)).fetchall()
+            if password == results[0][0]:
+                return True
+            if os.path.isfile("../db/" + str(username) + ".db") == True:
+                self.createPopulationConnection()
+            else:
+                return False
+        except Exception:
+            return 'Invalid Username!'
+
+    def createPopulationConnection(self):
+        conn = sqlite3.connect(self.populationFile)
+        self.pCon = conn.cursor()
+
 
 class Game:
     population = []
@@ -25,21 +56,20 @@ class Game:
     def getPopulation(self):
         output = []
         for human in self.population:
-            output.append(human.name +'\n')
-            output.append('>Age: '+str(human.age)+'\n')
-            output.append('>Gender: '+human.gender+'\n')
+            output.append(human.name + '\n')
+            output.append('>Age: ' + str(human.age) + '\n')
+            output.append('>Gender: ' + human.gender + '\n')
             if human.married != None:
-                output.append('>Married to: '+human.married.name+'\n')
+                output.append('>Married to: ' + human.married.name + '\n')
             try:
-                output.append('>Mother: '+human.mum+'\n')
-                output.append('>Father: '+human.dad+'\n')
+                output.append('>Mother: ' + human.mum + '\n')
+                output.append('>Father: ' + human.dad + '\n')
             except:
-                output.append('>Mother: '+human.mum.name+'\n')
-                output.append('>Father: '+human.dad.name+'\n')
+                output.append('>Mother: ' + human.mum.name + '\n')
+                output.append('>Father: ' + human.dad.name + '\n')
             output.append('\n')
         print(''.join(output))
         return output
-
 
     def getPopulationValue(self):
         return len(self.population)
@@ -100,6 +130,7 @@ class Human:
 
     def getHumanName(self):
         return self.name
+
     def getHumanAge(self):
         return self.age
 
@@ -176,6 +207,7 @@ def startGame():
     gameRunning = True
     game = Login()
     game.createConnection()
+
 
 def populationIncrease(gameRunning, populationSize, populationMultiplier):
     for i in range(0, 100):
