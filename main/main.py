@@ -2,19 +2,83 @@ import datetime
 import random
 import time
 import sqlite3
+import os
 from sqlite3 import Error
 
+
+
 class Login:
-    username = None
-    password = None
+
+    def __init__(self):
+        self.con = self.createConnection()
 
     def createConnection(self):
         try:
             conn = sqlite3.connect(r"../db/users.db")
-            return conn
+            con = conn.cursor()
+            return con
         except Error as e:
             print(e)
         return None
+
+    def inputCredentials(self):
+        username = input("Please enter your username: ")
+        password = input("Please enter your password: ")
+        self.verifyCredentials(username, password)
+
+
+    def verifyCredentials(self, username, password):
+        verification = False
+        while verification == False:
+            verification = self.checkCredentials(username, password)
+            self.username = username
+            self.password = password
+            self.userPopulationConnection()
+            if verification == True:
+                return "Login was successful!"
+            if verification == False:
+                return 'Invalid password or email!'
+
+
+    def checkCredentials(self, username, password):
+        try:
+            results = self.con.execute("SELECT passwordHash FROM users WHERE username=?", (username,)).fetchall()
+            if password == results[0][0]:
+                return True
+            else:
+                return False
+        except Exception:
+            return False
+
+
+    def userPopulationConnection(self):
+        conn = sqlite3.connect(r"../db/" + str(self.username) + ".db")
+        self.pCon = conn.cursor()
+        # self.humanSampleTable()
+        return self.pCon
+
+    def humanSampleTable(self):
+        self.pCon.execute('''CREATE TABLE IF NOT EXISTS Humans (
+            HumanID integer PRIMARY KEY,
+            Forename text NOT NULL,
+            MiddleName text,
+            Surname text NOT NULL,
+            Age integer NOT NULL,
+            DOB text NOT NULL,
+            Gender text NOT NULL,
+            Married integer NULL,
+            Mother integer NOT NULL,
+            Father integer NOT NULL,
+            FOREIGN KEY (Married) REFERENCES Humans(HumanID),
+            FOREIGN KEY (Mother) REFERENCES Humans(HumanID),
+            FOREIGN KEY (Father) REFERENCES Humans(HumanID)
+            )''')
+
+
+
+class Register:
+    pass
+
 
 class Game:
     population = []
@@ -25,21 +89,20 @@ class Game:
     def getPopulation(self):
         output = []
         for human in self.population:
-            output.append(human.name +'\n')
-            output.append('>Age: '+str(human.age)+'\n')
-            output.append('>Gender: '+human.gender+'\n')
+            output.append(human.name + '\n')
+            output.append('>Age: ' + str(human.age) + '\n')
+            output.append('>Gender: ' + human.gender + '\n')
             if human.married != None:
-                output.append('>Married to: '+human.married.name+'\n')
+                output.append('>Married to: ' + human.married.name + '\n')
             try:
-                output.append('>Mother: '+human.mum+'\n')
-                output.append('>Father: '+human.dad+'\n')
+                output.append('>Mother: ' + human.mum + '\n')
+                output.append('>Father: ' + human.dad + '\n')
             except:
-                output.append('>Mother: '+human.mum.name+'\n')
-                output.append('>Father: '+human.dad.name+'\n')
+                output.append('>Mother: ' + human.mum.name + '\n')
+                output.append('>Father: ' + human.dad.name + '\n')
             output.append('\n')
         print(''.join(output))
         return output
-
 
     def getPopulationValue(self):
         return len(self.population)
@@ -100,6 +163,7 @@ class Human:
 
     def getHumanName(self):
         return self.name
+
     def getHumanAge(self):
         return self.age
 
@@ -176,6 +240,7 @@ def startGame():
     gameRunning = True
     game = Login()
     game.createConnection()
+
 
 def populationIncrease(gameRunning, populationSize, populationMultiplier):
     for i in range(0, 100):
