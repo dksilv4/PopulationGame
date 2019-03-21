@@ -1,7 +1,8 @@
 import sqlite3
-
+import os
 import main.main as main
 import unittest
+from unittest.mock import patch
 
 
 class TestGame(unittest.TestCase):
@@ -36,11 +37,21 @@ class TestGame(unittest.TestCase):
             self.assertEqual(user[5], 'pw')
 
     def testLoginCredCheck(self):
-        test1 = login.checkLoginCredentials('dksilv4', 'pw')
-        test2 = login.checkLoginCredentials('dksilv4', 'p')
-        test3 = login.checkLoginCredentials('dk', 'pw')
-        self.assertEqual(test1, True)
-        self.assertEqual(test2, False)
-        self.assertEqual(test3, "Invalid Username!")
+        self.assertEqual(login.checkCredentials('dksilv4', 'pw'), True)
+        self.assertEqual(login.checkCredentials('dksilv4', 'p'), False)
+        self.assertEqual(login.checkCredentials('dk', 'pw'), False)
+
+    def testUserPopulationConnection(self):
+        login.checkCredentials('dksilv4','pw')
+        self.assertEqual(os.path.isfile("../db/dksilv4.db"), True)
+
+    def testUserVerification(self):
+        self.assertEqual(login.verifyCredentials("dksilv4","pw"),"Login was successful!")
+        self.assertEqual(login.verifyCredentials("dksilv4", "pwn"), "Invalid password or email!")
+
+
+
+
+
 
 
