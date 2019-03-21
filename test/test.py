@@ -2,18 +2,19 @@ import sqlite3
 import os
 import main.main as main
 import unittest
-from unittest.mock import patch
+import time
 
 
 class TestGame(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        global z, con, login
+        global z, con, login, register
         z = main.Game()
         conn = sqlite3.connect(r"../db/users.db")
         con = conn.cursor()
         login = main.Login()
+        register = main.Register()
 
     def testObjectCreation(self):
         con.execute('''INSERT INTO Humans(HumanID,Forename,MiddleName,Surname,Age,DOB,Gender,Married,Mother,Father) 
@@ -42,16 +43,44 @@ class TestGame(unittest.TestCase):
         self.assertEqual(login.checkCredentials('dk', 'pw'), False)
 
     def testUserPopulationConnection(self):
-        login.checkCredentials('dksilv4','pw')
+        login.verifyCredentials('dksilva', 'pwn')
+        self.assertEqual(os.path.isfile("../db/dksilva.db"), False)
+        login.verifyCredentials('dksilv4','pw')
         self.assertEqual(os.path.isfile("../db/dksilv4.db"), True)
 
     def testUserVerification(self):
         self.assertEqual(login.verifyCredentials("dksilv4","pw"),"Login was successful!")
         self.assertEqual(login.verifyCredentials("dksilv4", "pwn"), "Invalid password or email!")
 
+    def testRegPW(self):
+        self.assertEqual(register.verifyPassword(register.hashPassword("dk"), 'dk'), True)
+        self.assertEqual(register.verifyPassword(register.hashPassword("dk"), 'd'), False)
 
+    def testEmailValidation(self):
+        self.assertEqual(register.validateEmail('diogo.dk.silva@outlook.com'), True)
+        self.assertEqual(register.validateEmail('dd.com'), False)
 
+    def testVerifyInputs(self):
+        self.assertEqual(
+            register.verifyInputs('test','test', 'test', 'test@test.com', 'test@test.com','pass','pass'),True)
+        self.assertEqual(
+            register.verifyInputs('test', 'test', 'test', 'test@test.com', 'testtest.com', 'pass', 'pass'),False)
 
+    def testSaveToDB(self):
+        searchLen = len(con.execute('''SELECT * FROM users''').fetchall())+1
+        register.saveToDB('test', 'test', 'test'+str(searchLen), 'test@test.com', 'pass')
+        search = con.execute('''SELECT * FROM users''').fetchall()
+        self.assertEqual(search[-1][1],'test')
+        self.assertEqual(search[-1][2], 'test')
+        self.assertEqual(search[-1][3], 'test'+str(searchLen))
+        self.assertEqual(search[-1][4], 'test@test.com')
+        self.assertEqual(search[-1][5], 'pass')
 
-
-
+    def testFullRegisterProcess(self):
+        searchLen = len(con.execute('''SELECT * FROM users''').fetchall()) + 1
+        register.checkInputs('test','test', 'usertest'+str(searchLen), 'test@test.com', 'test@test.com','pass','pass')
+        search = con.execute('''SELECT * FROM users''').fetchall()
+        self.assertEqual(search[-1][1], 'test')
+        self.assertEqual(search[-1][2], 'test')
+        self.assertEqual(search[-1][3], 'usertest' + str(searchLen))
+        self.assertEqual(search[-1][4], 'test@test.com')

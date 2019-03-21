@@ -4,7 +4,8 @@ import time
 import sqlite3
 import os
 from sqlite3 import Error
-
+import hashlib, binascii, os
+from validate_email import validate_email
 
 
 class Login:
@@ -26,23 +27,23 @@ class Login:
         password = input("Please enter your password: ")
         self.verifyCredentials(username, password)
 
-
     def verifyCredentials(self, username, password):
         verification = False
         while verification == False:
             verification = self.checkCredentials(username, password)
             self.username = username
             self.password = password
-            self.userPopulationConnection()
             if verification == True:
+                self.userPopulationConnection()
                 return "Login was successful!"
             if verification == False:
                 return 'Invalid password or email!'
 
-
     def checkCredentials(self, username, password):
         try:
             results = self.con.execute("SELECT passwordHash FROM users WHERE username=?", (username,)).fetchall()
+            if self.verifyPassword(results[0][0],password):
+                return True
             if password == results[0][0]:
                 return True
             else:
@@ -50,11 +51,18 @@ class Login:
         except Exception:
             return False
 
+    def verifyPassword(self, storedPassword, providedPassword):
+        """Verify a stored password against one provided by user"""
+        salt = storedPassword[:64]
+        storedPassword = storedPassword[64:]
+        pwdhash = hashlib.pbkdf2_hmac('sha512', providedPassword.encode('utf-8'), salt.encode('ascii'), 100000)
+        pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+        return pwdhash == storedPassword
 
     def userPopulationConnection(self):
         conn = sqlite3.connect(r"../db/" + str(self.username) + ".db")
         self.pCon = conn.cursor()
-        # self.humanSampleTable()
+        self.humanSampleTable()
         return self.pCon
 
     def humanSampleTable(self):
@@ -75,9 +83,78 @@ class Login:
             )''')
 
 
-
 class Register:
-    pass
+
+    def __init__(self):
+        self.conn = self.createConnection()
+        self.con = self.conn.cursor()
+
+        self.forename = ''
+        self.surname = ''
+        self.username = ''
+        self.email = ''
+        self.emailVer = ''
+        self.password = ''
+        self.passwordVer = ''
+        self.passwordHash = ''
+
+    def getInputs(self):
+        self.forename = input("Please enter your forename: ")
+        self.surname = input("Please enter your surname: ")
+        self.username = input("Please enter your username: ")
+        self.email = input(" Please enter your email: ")
+        self.emailVer = input("Please enter your email again: ")
+        self.password = input(" Please enter your password: ")
+        self.passwordVer = input(" Please enter your password again: ")
+        self.checkInputs(self.forename, self.surname, self.username, self.email, self.emailVer,
+                         self.password, self.passwordVer)
+
+    def checkInputs(self, forename, surname, username, email, emailVer, password, passwordVer):
+
+        verified = self.verifyInputs(forename, surname, username, email, emailVer, password, passwordVer)
+        if verified:
+            self.saveToDB(forename, surname, username, email, self.passwordHash)
+
+
+
+    def createConnection(self):
+        try:
+            conn = sqlite3.connect(r"../db/users.db")
+            return conn
+        except Error as e:
+            print(e)
+        return None
+
+    def verifyInputs(self, forename, surname, username, email, emailVer, password, passwordVer):
+
+        if self.email != self.emailVer:
+            while self.email != self.emailVer:
+                self.email = input(" Please enter your email: ")
+                self.emailVer = input("Please enter your email again: ")
+        if self.password == self.passwordVer:
+            self.passwordHash = self.hashPassword(self.password)
+        else:
+            while password != passwordVer:
+                self.password = input(" Please enter your password: ")
+                self.passwordVer = input(" Please enter your password again: ")
+        return email == emailVer and password == passwordVer and  validate_email(email)
+
+    def saveToDB(self, forename, surname, username, email, password):
+        self.con.execute("INSERT INTO users(Forename, Surname, username, email, passwordHash) VALUES(?, ?, ?,?,?)",
+                         [(forename), (surname), (username), (email), (password)])
+        self.conn.commit()
+
+    def validateEmail(self, email):
+        return validate_email(email)
+
+    def hashPassword(self, password):
+        """Hash a password for storing."""
+        salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
+        pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
+        pwdhash = binascii.hexlify(pwdhash)
+        return (salt + pwdhash).decode('ascii')
+
+
 
 
 class Game:
