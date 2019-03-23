@@ -3,9 +3,17 @@ from sqlite3 import Error
 import os
 
 
-class Database:
+class DB:
     def __init__(self):
         pass
+
+    def reset(self):
+        try:
+            self.addUserTable()
+            self.addUserSampleData()
+            self.addHumanTable('dksilv4')
+        except:
+            pass
 
     def outputTable(self, table, username):
         if table == 'users':
@@ -40,13 +48,13 @@ class Database:
         except Error as e:
             print(e)
 
-    def addUserSampleData(self, table, *args):
-        if table == 'users':
-            conn = sqlite3.connect(r"../db/users.db")
-            con = conn.cursor()
-            con.execute('''INSERT INTO users(userID, Forename, Surname, username, email, passwordHash)
+    def addUserSampleData(self):
+        conn = sqlite3.connect(r"../db/users.db")
+        con = conn.cursor()
+        con.execute('''INSERT INTO users(userID, Forename, Surname, username, email, passwordHash)
                     VALUES(1,'Diogo','da Silva','dksilv4','diogo.dk.silva@outlook.com','pw')''')
-            conn.close()
+        conn.commit()
+        conn.close()
 
     def addHumanTable(self, username):
         try:
@@ -118,7 +126,7 @@ class Login:
         if os.path.isfile("../db/" + username + ".db"):
             pass
         else:
-            Database().addHumanTable(username)
+            DB().addHumanTable(username)
 
 
 class Register():
@@ -187,7 +195,7 @@ class Register():
         return checkForename and checkEmail and checkSurname and checkUsername and checkPassword
 
     def checkName(self, name):
-        if len(name) > 5:
+        if len(name) > 3:
             return True
         else:
             return False
@@ -213,7 +221,7 @@ class Register():
             errors.append('No Digits.\n')
         if re.search('[A-Z]', password) is None:
             errors.append('No Capitals.\n')
-        else:
+        if password == passwordVer and errors == []:
             return True
         return errors
 
