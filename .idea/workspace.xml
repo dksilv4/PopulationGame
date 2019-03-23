@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="228fac42-ce22-4e3e-987c-3635d4be68d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/users.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/game.py" afterDir="false" />
@@ -17,20 +18,24 @@
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testLoginCredCheck.coverage" NAME="Unittests for test.TestGame.testLoginCredCheck Coverage Results" MODIFIED="1553198655485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame.coverage" NAME="Unittests for test.TestGame Coverage Results" MODIFIED="1553299386699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$db.coverage" NAME="db Coverage Results" MODIFIED="1553313999921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
-    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testNewHuman.coverage" NAME="Unittests for test1.Test.testNewHuman Coverage Results" MODIFIED="1553312717135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testNewHuman.coverage" NAME="Unittests for test1.Test.testNewHuman Coverage Results" MODIFIED="1553324723844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testSaveToDB.coverage" NAME="Unittests for test.TestGame.testSaveToDB Coverage Results" MODIFIED="1553299366558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/Population_Game$Unittests_in_test1_py.coverage" NAME="Unittests in test1.py Coverage Results" MODIFIED="1553319848023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_in_test1_py.coverage" NAME="Unittests in test1.py Coverage Results" MODIFIED="1553325384166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testObjectCreation.coverage" NAME="Unittests for test.TestGame.testObjectCreation Coverage Results" MODIFIED="1553295593387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testTableCreation.coverage" NAME="Unittests for test.TestGame.testTableCreation Coverage Results" MODIFIED="1552866383747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$main.coverage" NAME="main Coverage Results" MODIFIED="1552885706045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testPopulationDB.coverage" NAME="Unittests for test1.Test.testPopulationDB Coverage Results" MODIFIED="1553310861160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test.coverage" NAME="Unittests for test1.Test Coverage Results" MODIFIED="1553324114164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testHumanProcreate.coverage" NAME="Unittests for test.TestGame.testHumanProcreate Coverage Results" MODIFIED="1552422828473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testUserPopulationConnection.coverage" NAME="Unittests for test.TestGame.testUserPopulationConnection Coverage Results" MODIFIED="1553198277690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testRegPW.coverage" NAME="Unittests for test.TestGame.testRegPW Coverage Results" MODIFIED="1553198494153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/Population_Game$game.coverage" NAME="game Coverage Results" MODIFIED="1553319062752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testCheckEmail.coverage" NAME="Unittests for test1.Test.testCheckEmail Coverage Results" MODIFIED="1553322758986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testIsInfoInDB.coverage" NAME="Unittests for test1.Test.testIsInfoInDB Coverage Results" MODIFIED="1553322742922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$game.coverage" NAME="game Coverage Results" MODIFIED="1553323904499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testHumanCreation.coverage" NAME="Unittests for test.TestGame.testHumanCreation Coverage Results" MODIFIED="1552884359277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test_TestGame_testFullRegisterProcess.coverage" NAME="Unittests for test.TestGame.testFullRegisterProcess Coverage Results" MODIFIED="1553198682079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/Population_Game$Unittests_in_test_py.coverage" NAME="Unittests in test.py Coverage Results" MODIFIED="1553299469937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Population_Game$Unittests_for_test1_Test_testInputValidation.coverage" NAME="Unittests for test1.Test.testInputValidation Coverage Results" MODIFIED="1553324301899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -58,7 +63,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="db" value="14" />
+          <entry key="db" value="15" />
           <entry key="md" value="1" />
           <entry key="py" value="17" />
         </counts>
@@ -67,37 +72,39 @@
         <counts>
           <entry key="Markdown" value="1" />
           <entry key="Python" value="17" />
-          <entry key="SQL" value="14" />
+          <entry key="SQL" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="dummy" value="15" />
           <entry key="md" value="7" />
-          <entry key="py" value="16327" />
-          <entry key="txt" value="1259" />
+          <entry key="py" value="18543" />
+          <entry key="txt" value="1313" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="7" />
-          <entry key="PLAIN_TEXT" value="1259" />
-          <entry key="Python" value="16292" />
+          <entry key="PLAIN_TEXT" value="1328" />
+          <entry key="Python" value="18508" />
           <entry key="SQL" value="35" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4395448">
+    <splitter split-orientation="horizontal" split-proportion="0.5675676">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-669">
+                <state relative-caret-position="-1676">
                   <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="41" />
                   <folding>
                     <element signature="n#IF#0" />
+                    <element signature="e#5677#7824#0" />
                     <marker date="1553299462481" expanded="true" signature="203:252" ph="..." />
                     <marker date="1553299462481" expanded="true" signature="667:673" ph="..." />
                     <marker date="1553299462481" expanded="true" signature="721:1154" ph="..." />
@@ -114,14 +121,15 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/test1.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="498">
-                  <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+                <state relative-caret-position="1725">
+                  <caret line="115" selection-start-line="115" selection-end-line="115" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
-                    <marker date="1553319667515" expanded="true" signature="287:293" ph="..." />
+                    <marker date="1553325445723" expanded="true" signature="287:293" ph="..." />
+                    <marker date="1553325445723" expanded="true" signature="2586:2805" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -146,21 +154,24 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main/game.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1932">
-                  <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+                <state relative-caret-position="-3192">
+                  <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
                   <folding>
                     <element signature="e#0#14#0" expanded="true" />
+                    <element signature="e#55#59#0" />
                     <element signature="n#IF#0" />
                     <element signature="e#0#168#1" />
                     <element signature="n#IF#0" />
-                    <marker date="1553319848016" expanded="true" signature="62:3391" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="121:284" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="991:1393" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="3403:4348" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="3428:3442" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="4496:4497" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="4496:8077" ph="..." />
-                    <marker date="1553319848016" expanded="true" signature="5288:7144" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="63:3725" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="86:105" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="121:284" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="984:1386" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="3737:4680" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="3762:3776" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="4829:4830" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="5621:8165" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="8320:8531" ph="..." />
+                    <marker date="1553325791839" expanded="true" signature="9491:9503" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -240,6 +251,11 @@
             <path>
               <item name="Population Game" type="b2602c69:ProjectViewProjectNode" />
               <item name="Population Game" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Population Game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Population Game" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -283,28 +299,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests in test1.py">
-    <configuration name="db" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Population Game" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/db.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="game" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Population Game" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -327,6 +321,36 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for test1.Test" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Population Game" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test1.Test&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test1.Test.testInputValidation" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="Population Game" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test1.Test.testInputValidation&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test1.Test.testNewHuman" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="Population Game" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -339,21 +363,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test1.Test.testNewHuman&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test1.Test.testPopulationDB" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="Population Game" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test1.Test.testPopulationDB&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -373,19 +382,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.db" />
       <item itemvalue="Python tests.Unittests in test1.py" />
-      <item itemvalue="Python tests.Unittests for test1.Test.testPopulationDB" />
-      <item itemvalue="Python tests.Unittests for test1.Test.testNewHuman" />
       <item itemvalue="Python.game" />
+      <item itemvalue="Python tests.Unittests for test1.Test" />
+      <item itemvalue="Python tests.Unittests for test1.Test.testInputValidation" />
+      <item itemvalue="Python tests.Unittests for test1.Test.testNewHuman" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test1.py" />
-        <item itemvalue="Python.game" />
-        <item itemvalue="Python.db" />
         <item itemvalue="Python tests.Unittests for test1.Test.testNewHuman" />
-        <item itemvalue="Python tests.Unittests for test1.Test.testPopulationDB" />
+        <item itemvalue="Python tests.Unittests for test1.Test.testInputValidation" />
+        <item itemvalue="Python tests.Unittests for test1.Test" />
+        <item itemvalue="Python.game" />
       </list>
     </recent_temporary>
   </component>
@@ -491,38 +500,52 @@
       <option name="project" value="LOCAL" />
       <updated>1553318131761</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added tests for the new register class">
+      <created>1553319883897</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1553319883897</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Fixed Bugs.">
+      <created>1553323068159</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1553323068159</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 04h 31m 58s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 08m 15s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 04h 32m 29s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 09m 25s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 04h 32m 57s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 10m 46s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 04h 33m 30s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 12m 05s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 04h 34m 09s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 12m 19s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 05h 31m 48s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 12m 45s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 05h 37m 52s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 13m 15s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 05h 41m 07s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 13m 28s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 05h 41m 18s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 13m 48s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 05h 44m 08s.xml">
+    <history-entry file="Unittests_in_test1_py - 2019.03.23 at 07h 16m 24s.xml">
       <configuration name="Unittests in test1.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -542,7 +565,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32985386" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
@@ -570,7 +593,9 @@
     <MESSAGE value="Implemented the register class.&#10;Implemented the hash feature into the register.&#10;Implemented the confirm password with hash into the login function.&#10;Left the original check for the non hash password in the program for testing purposes." />
     <MESSAGE value="Started making the code more robust therefore im re-writing the whole code.&#10;Added class 'Database' to carry out all database processes instead of having sql code all over the place it can be found all in once place.&#10;Finished class 'Login'" />
     <MESSAGE value="Started Register class&#10;added most validation fucntions required to make a user&#10;- need to add all the tests for the class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started Register class&#10;added most validation fucntions required to make a user&#10;- need to add all the tests for the class" />
+    <MESSAGE value="Added tests for the new register class" />
+    <MESSAGE value="Fixed Bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bugs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py" />
@@ -616,13 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/users.db">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -636,12 +654,56 @@
     <entry file="file://$PROJECT_DIR$/db/dksilv4.db">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/users.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1553325445723" expanded="true" signature="287:293" ph="..." />
+            <marker date="1553325445723" expanded="true" signature="2586:2805" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3192">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#55#59#0" />
+            <element signature="n#IF#0" />
+            <element signature="e#0#168#1" />
+            <element signature="n#IF#0" />
+            <marker date="1553325791839" expanded="true" signature="63:3725" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="86:105" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="121:284" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="984:1386" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="3737:4680" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="3762:3776" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="4829:4830" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="5621:8165" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="8320:8531" ph="..." />
+            <marker date="1553325791839" expanded="true" signature="9491:9503" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-669">
+        <state relative-caret-position="-1676">
           <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="41" />
           <folding>
             <element signature="n#IF#0" />
+            <element signature="e#5677#7824#0" />
             <marker date="1553299462481" expanded="true" signature="203:252" ph="..." />
             <marker date="1553299462481" expanded="true" signature="667:673" ph="..." />
             <marker date="1553299462481" expanded="true" signature="721:1154" ph="..." />
@@ -653,38 +715,6 @@
             <marker date="1553299462481" expanded="true" signature="3737:3738" ph="..." />
             <marker date="1553299462481" expanded="true" signature="3739:3744" ph="..." />
             <marker date="1553299462481" expanded="true" signature="4661:4670" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1932">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="n#IF#0" />
-            <element signature="e#0#168#1" />
-            <element signature="n#IF#0" />
-            <marker date="1553319848016" expanded="true" signature="62:3391" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="121:284" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="991:1393" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="3403:4348" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="3428:3442" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="4496:4497" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="4496:8077" ph="..." />
-            <marker date="1553319848016" expanded="true" signature="5288:7144" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1553319667515" expanded="true" signature="287:293" ph="..." />
           </folding>
         </state>
       </provider>

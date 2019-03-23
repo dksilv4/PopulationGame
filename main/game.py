@@ -15,7 +15,7 @@ class DB:
         except:
             pass
 
-    def outputTable(self, db, username):
+    def outputTable(self, db, username=None):
         if db == 'users':
             conn = sqlite3.connect(r"../db/users.db")
             con = conn.cursor()
@@ -139,7 +139,8 @@ class Login:
             DB().addHumanTable(username)
 
 
-class Register():
+class Register:
+
     forename = ''
     surname = ''
     username = ''
@@ -184,7 +185,7 @@ class Register():
             if checkUsername == 'Taken':
                 print("Username has been taken, please choose another one.")
             newInput = input("Please enter your username again: ")
-            checkUsername = self.checkName(newInput)
+            checkUsername = self.checkUsername(newInput)
             if checkUsername:
                 self.username = newInput
         checkEmail = self.checkEmail(email, emailVer)
@@ -208,7 +209,15 @@ class Register():
             checkPassword = self.checkPassword(pw, pwVer)
             if checkPassword:
                 self.password = pw
-        return checkForename and checkEmail and checkSurname and checkUsername and checkPassword
+        verified = checkForename and checkEmail and checkSurname and checkUsername and checkPassword
+        if verified:
+            self.forename = forename
+            self.surname = surname
+            self.email = email
+            self.username = username
+            self.password = password
+            DB().newUser(self.forename, self.surname, self.username, self.email, self.password)
+        return verified
 
     def checkName(self, name):
         if len(name) > 3:
@@ -252,6 +261,12 @@ class Register():
         if password == passwordVer and errors == []:
             return True
         return errors
+
+class Human:
+    pass
+
+class Game:
+    pass
 
 
 if __name__ == '__main__':
