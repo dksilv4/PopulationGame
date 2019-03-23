@@ -12,6 +12,7 @@ class Test(unittest.TestCase):
         self.login = m.Login()
         self.db = m.Database()
 
+
     def testCheckCredentials(self):
         self.assertEqual(self.login.checkCredentials('dksilv4', 'pw'), True)
         self.assertEqual(self.login.checkCredentials('dksilv4', 'p'), False)
@@ -25,16 +26,16 @@ class Test(unittest.TestCase):
         self.assertEqual(os.path.isfile("../db/test.db"), True)
 
     def testNewUser(self):
+        print('\n'+self.testNewUser.__name__.upper())
         try:
             self.db.newUser('Marcel', 'Mendes', 'marcypt', 'marcy@dksilv4.com', 'pass')
         except:
-            print('Test {} has already been run successfully.\n'.format(self.testNewUser.__name__))
+            pass
         print(self.db.outputTable('users', 'dksilv4'))
 
     def testNewHuman(self):
-        try:
-            human = ['Diogo', 'da Silva', '18', '12-10-1999', 'male', 0, 0, 0]
-            self.db.newHuman('dksilv4', human)
-        except:
-            print('Test {} has already been run successfully.\n'.format(self.testNewHuman.__name__))
+        print('\n'+self.testNewHuman.__name__.upper())
+        human = ['Diogo', 'da Silva', '18', '12-10-1999', 'male', 0, 0, 0]
+        self.db.newHuman('dksilv4', human)
         print(self.db.outputTable('Humans', 'dksilv4'))
+

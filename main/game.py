@@ -82,10 +82,9 @@ class Database:
     def newHuman(self, username, human):
         conn = sqlite3.connect(r"../db/" + username + ".db")
         con = conn.cursor()
-        query = "INSERT INTO Humans(Forename,Surname,Age,DOB,Gender,Married,Mother,Father) VALUES(?, ?, ?,?,?,?,?,?,?)"
+        query = "INSERT INTO Humans(Forename,Surname,Age,DOB,Gender,Married,Mother,Father) VALUES(?, ?,?,?,?,?,?,?)"
         con.execute(query,
-                    [(human[0]), (human[1]), (human[2]), (human[3]), (human[4]), (human[5]), (human[6]), (human[7]),
-                     (human[8])])
+                    [(human[0]), (human[1]), (human[2]), (human[3]), (human[4]), (human[5]), (human[6]), (human[7])])
         conn.commit()
         conn.close()
 
@@ -123,6 +122,101 @@ class Login:
 
 
 class Register():
+    forename = ''
+    surname = ''
+    username = ''
+    email = ''
+    emailVer = ''
+    password = ''
+    passwordVer = ''
+    passwordHash = ''
 
     def __init__(self):
         pass
+
+    def getInputs(self):
+        self.forename = input("Please enter your forename: ")
+        self.surname = input("Please enter your surname: ")
+        self.username = input("Please enter your username: ")
+        self.email = input(" Please enter your email: ")
+        self.emailVer = input("Please enter your email again: ")
+        self.password = input(" Please enter your password: ")
+        self.passwordVer = input(" Please enter your password again: ")
+        if self.inputValidation(self.forename, self.surname, self.username, self.email, self.emailVer,
+                                self.password, self.passwordVer):
+            pass
+
+    def inputValidation(self, forename, surname, username, email, emailVer, password, passwordVer):
+        checkForename = self.checkName(forename)
+        while not checkForename:
+            name = input("Invalid input. Please enter your forename again: ")
+            checkForename = self.checkName(name)
+            if checkForename:
+                self.forename = name
+        checkSurname = self.checkName(surname)
+        while not checkSurname:
+            name = input("Invalid input. Please enter your surname again: ")
+            checkSurname = self.checkName(name)
+            if checkSurname:
+                self.surname = name
+        checkUsername = self.checkName(username)
+        while not checkUsername:
+            name = input("Invalid input. Please enter your username again: ")
+            checkUsername = self.checkName(name)
+            if checkUsername:
+                self.username = name
+        checkEmail = self.checkEmail(email, emailVer)
+        while not checkEmail:
+            if checkEmail == 'InvalidFormat':
+                print("Wrong email format given.")
+            if checkEmail == 'NoMatch':
+                print("Emails provided don't match.")
+            mail = input("Invalid input. Please enter your email again: ")
+            mailVer = input("Please enter the email again: ")
+            checkEmail = self.checkEmail(mail, mailVer)
+            if checkEmail:
+                self.email = mail
+        checkPassword = self.checkPassword(password, passwordVer)
+        while not checkPassword:
+            print(''.join(checkPassword))
+            pw = input("Invalid input. Please enter your password again: ")
+            pwVer = input("Please enter the password again: ")
+            checkPassword = self.checkPassword(pw, pwVer)
+            if checkPassword:
+                self.password = pw
+        return checkForename and checkEmail and checkSurname and checkUsername and checkPassword
+
+    def checkName(self, name):
+        if len(name) > 5:
+            return True
+        else:
+            return False
+
+    def checkEmail(self, email, emailVer):
+        from validate_email import validate_email
+        if validate_email(email):
+            if email == emailVer:
+                return True
+            else:
+                return 'NoMatch'
+        else:
+            return 'InvalidFormat'
+
+    def checkPassword(self, password, passwordVer):
+        errors = []
+        import re
+        if password != passwordVer:
+            errors.append("No Match.\n")
+        if len(password) < 5:
+            errors.append('Invalid Len.\n')
+        if re.search('[0-9]', password) is None:
+            errors.append('No Digits.\n')
+        if re.search('[A-Z]', password) is None:
+            errors.append('No Capitals.\n')
+        else:
+            return True
+        return errors
+
+
+if __name__ == '__main__':
+    pass
