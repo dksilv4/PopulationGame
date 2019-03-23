@@ -15,14 +15,14 @@ class DB:
         except:
             pass
 
-    def outputTable(self, table, username):
-        if table == 'users':
+    def outputTable(self, db, username):
+        if db == 'users':
             conn = sqlite3.connect(r"../db/users.db")
             con = conn.cursor()
             output = con.execute('''SELECT * FROM users''').fetchall()
             conn.close()
             return output
-        if table == 'Humans':
+        if db == 'Humans':
             try:
                 conn = sqlite3.connect(r"../db/" + username + ".db")
                 con = conn.cursor()
@@ -31,7 +31,7 @@ class DB:
                 return output
             except:
                 self.addHumanTable(username)
-                self.outputTable(table, username)
+                self.outputTable(db, username)
 
     def addUserTable(self):
         try:
@@ -96,6 +96,16 @@ class DB:
         conn.commit()
         conn.close()
 
+    def isInfoInUsers(self, dataType, data):
+        conn = sqlite3.connect(r"../db/users.db")
+        con = conn.cursor()
+        query = """SELECT * FROM users WHERE {} =?""".format(dataType)
+        results = con.execute(query, (data,)).fetchall()
+        if results == []:
+            return False
+        else:
+            return True
+
 
 class Login:
 
@@ -157,28 +167,34 @@ class Register():
     def inputValidation(self, forename, surname, username, email, emailVer, password, passwordVer):
         checkForename = self.checkName(forename)
         while not checkForename:
-            name = input("Invalid input. Please enter your forename again: ")
-            checkForename = self.checkName(name)
+            newInput = input("Invalid input. Please enter your forename again: ")
+            checkForename = self.checkName(newInput)
             if checkForename:
-                self.forename = name
+                self.forename = newInput
         checkSurname = self.checkName(surname)
         while not checkSurname:
-            name = input("Invalid input. Please enter your surname again: ")
-            checkSurname = self.checkName(name)
+            newInput = input("Invalid input. Please enter your surname again: ")
+            checkSurname = self.checkName(newInput)
             if checkSurname:
-                self.surname = name
-        checkUsername = self.checkName(username)
+                self.surname = newInput
+        checkUsername = self.checkUsername(username)
         while not checkUsername:
-            name = input("Invalid input. Please enter your username again: ")
-            checkUsername = self.checkName(name)
+            if checkUsername == 'NoLen':
+                print("Username has to be more than five characters.")
+            if checkUsername == 'Taken':
+                print("Username has been taken, please choose another one.")
+            newInput = input("Please enter your username again: ")
+            checkUsername = self.checkName(newInput)
             if checkUsername:
-                self.username = name
+                self.username = newInput
         checkEmail = self.checkEmail(email, emailVer)
         while not checkEmail:
             if checkEmail == 'InvalidFormat':
                 print("Wrong email format given.")
             if checkEmail == 'NoMatch':
                 print("Emails provided don't match.")
+            if checkEmail == 'Used':
+                print("Email already in use, please choose another.")
             mail = input("Invalid input. Please enter your email again: ")
             mailVer = input("Please enter the email again: ")
             checkEmail = self.checkEmail(mail, mailVer)
@@ -200,11 +216,23 @@ class Register():
         else:
             return False
 
+    def checkUsername(self, username):
+        if len(username) < 3:
+            return 'NoLen'
+        else:
+            if DB().isInfoInUsers('username', username):
+                return 'Taken'
+            else:
+                return True
+
     def checkEmail(self, email, emailVer):
         from validate_email import validate_email
         if validate_email(email):
             if email == emailVer:
-                return True
+                if DB().isInfoInUsers('email', email):
+                    return 'Used'
+                else:
+                    return True
             else:
                 return 'NoMatch'
         else:
