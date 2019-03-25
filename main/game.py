@@ -1,6 +1,9 @@
+import os
 import sqlite3
 from sqlite3 import Error
-import os
+import csv
+import datetime
+import random
 
 
 class DB:
@@ -101,16 +104,23 @@ class DB:
         con = conn.cursor()
         query = """SELECT * FROM users WHERE {} =?""".format(dataType)
         results = con.execute(query, (data,)).fetchall()
+        conn.close()
         if results == []:
             return False
         else:
             return True
 
+    @staticmethod
+    def humanUpdateValue(column, newValue, nameColumn, humanName, ):
+        conn = sqlite3.connect(r"../db/" + username + ".db")
+        con = conn.cursor()
+        query = """UPDATE Humans SET {} = {} WHERE {} = {}""".format(column, newValue, nameColumn, humanName)
+
 
 class Login:
-
     def __init__(self):
-        pass
+        self.verified = False
+        self.username = None
 
     def checkCredentials(self, username, password):
         try:
@@ -126,11 +136,11 @@ class Login:
             return False
 
     def getCredentials(self):
-        username = input("Please enter your username: ")
+        self.username = input("Please enter your username: ")
         password = input("Please enter your password: ")
-        verified = self.checkCredentials(username, password)
-        if verified:
-            self.populationDB(username)
+        self.verified = self.checkCredentials(self.username, password)
+        if self.verified:
+            self.populationDB(self.username)
 
     def populationDB(self, username):
         if os.path.isfile("../db/" + username + ".db"):
@@ -140,7 +150,6 @@ class Login:
 
 
 class Register:
-
     forename = ''
     surname = ''
     username = ''
@@ -262,12 +271,75 @@ class Register:
             return True
         return errors
 
+
 class Human:
-    pass
+    # def __init__(self, forename, surname, age, dob, gender, mother, father, married=None):
+    #     self.forename = forename
+    #     self.surname = surname
+    #     self.age = age
+    #     self.dob = dob
+    #     self.gender = gender
+    #     self.married = married
+    #     self.mother = mother
+    #     self.father = father
+    def __init__(self, mother=0, father=0, married=0):
+        self.db = DB()
+        self.gender = self.getGender()
+        self.forename, self.surname = self.newName(self.gender)
+        self.age = 0
+        self.dob = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+        self.mother = mother
+        self.father = father
+        self.married = married
+
+    def newHuman(self):
+        self.db.newHuman(username,
+                         [self.forename, self.surname, self.surname, self.age, self.dob, self.gender, self.mother,
+                          self.father, self.married])
+
+    def __add__(self, mother, father):
+        if mother.married == father.married:
+            self.db.newHuman(None, [None])
+
+    def marry(self):
+
+        pass
+
+    def readNameCSV(self):
+        with open('../csv/names.csv', newline='') as csvfile:
+            maleNames = []
+            femaleNames = []
+            surnames = []
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                info = ','.join(row)
+                maleName, femaleName, surname = info.split(',')
+                if maleName == 'MaleName':
+                    continue
+                else:
+                    maleNames.append(maleName)
+                    femaleNames.append(femaleName)
+                    surnames.append(surname)
+            return maleNames, femaleNames, surnames
+
+    def newName(self, gender):
+        maleNames, femaleNames, surnames = self.readNameCSV()
+        randomInt = random.randint(0, len(maleNames))
+        randomInt2 = random.randint(0, len(surnames))
+        if gender == 'male':
+            return maleNames[randomInt], surnames[randomInt2]
+        if gender == 'female':
+            return femaleNames[randomInt], surnames[randomInt2]
+
+    def getGender(self):
+        genders = ['male', 'female']
+        return genders[random.randint(0, 1)]
+
 
 class Game:
     pass
 
 
 if __name__ == '__main__':
-    pass
+    login = Login()
+    username = login.username

@@ -7,6 +7,7 @@ class Test(unittest.TestCase):
     login = None
     db = None
     register = None
+    human = None
 
     @classmethod
     def setUp(self):
@@ -14,6 +15,7 @@ class Test(unittest.TestCase):
         self.db = m.DB()
         self.register = m.Register()
         self.db.reset()
+        self.human = m.Human()
 
     def testCheckCredentials(self):
         self.assertEqual(self.login.checkCredentials('dksilv4', 'pw'), True)
@@ -113,3 +115,14 @@ class Test(unittest.TestCase):
         self.assertEqual(self.db.isInfoInUsers('username', 'djenorengoerp'), False)
         self.assertEqual(self.db.isInfoInUsers('email', 'diogo.dk.silva@outlook.com'), True)
         self.assertEqual(self.db.isInfoInUsers('email', 'didthrtnla@outlook.com'), False)
+
+    def testNewName(self):
+        print('\n' + self.testNewName.__name__.upper())
+        maleNames, femaleNames, surnames = self.human.readNameCSV()
+        maleName, maleSurname = self.human.newName('male')
+        femaleName, femaleSurname = self.human.newName('female')
+        print('Male Name: {} {}'.format(maleName, maleSurname))
+        print('Female Name: {} {}'.format(femaleName, femaleSurname))
+        self.assertEqual(maleName in maleNames, True)
+        self.assertEqual(femaleName in femaleNames, True)
+
