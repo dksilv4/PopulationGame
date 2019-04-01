@@ -1,4 +1,4 @@
-import main.game as m
+import main.game as game
 import unittest
 import os
 
@@ -8,14 +8,16 @@ class Test(unittest.TestCase):
     db = None
     register = None
     human = None
+    game = None
 
     @classmethod
     def setUp(self):
-        self.login = m.Login()
-        self.db = m.DB()
-        self.register = m.Register()
+        self.login = game.Login('dksilv4')
+        self.db = game.DB('dksilv4')
+        self.register = game.Register()
         self.db.reset()
-        self.human = m.Human()
+        self.human = game.Human()
+        self.game = game.Game('dksilv4')
 
     def testCheckCredentials(self):
         self.assertEqual(self.login.checkCredentials('dksilv4', 'pw'), True)
@@ -24,11 +26,10 @@ class Test(unittest.TestCase):
         self.assertEqual(self.login.checkCredentials('dkslv4', 'w'), False)
 
     def testPopulationDB(self):
-        self.login.populationDB('dksilv4')
-        self.login.populationDB('test')
+        self.login.populationDB()
+        self.login.populationDB()
         self.assertEqual(os.path.isfile("../db/dksilv4.db"), True)
-        self.assertEqual(os.path.isfile("../db/test.db"), True)
-        os.remove("../db/test.db")
+        self.assertEqual(os.path.isfile("../db/test.db"), False)
 
     def testNewUser(self):
         table = self.db.outputTable('users')
@@ -47,7 +48,7 @@ class Test(unittest.TestCase):
             print(self.db.outputTable('users'))
 
     def testNewHuman(self):
-        table = self.db.outputTable('Humans', 'dksilv4')
+        table = self.db.outputTable('Humans')
         try:
             if table[0][0] == 1 and table[0][1] == 'Diogo':
                 print('\n' + self.testNewHuman.__name__.upper())
@@ -56,12 +57,12 @@ class Test(unittest.TestCase):
                 print('\n' + self.testNewHuman.__name__.upper())
                 human = ['Diogo', 'da Silva', '18', '12-10-1999', 'male', 0, 0, 0]
                 self.db.newHuman('dksilv4', human)
-                print(self.db.outputTable('Humans', 'dksilv4'))
+                print(self.db.outputTable('Humans'))
         except:
             print('\n' + self.testNewHuman.__name__.upper())
             human = ['Diogo', 'da Silva', '18', '12-10-1999', 'male', 0, 0, 0]
             self.db.newHuman('dksilv4', human)
-            print(self.db.outputTable('Humans', 'dksilv4'))
+            print(self.db.outputTable('Humans'))
 
     def testCheckName(self):
         self.assertEqual(self.register.checkName('d'), False)
@@ -93,7 +94,7 @@ class Test(unittest.TestCase):
         self.assertEqual(self.register.checkPassword('Password1', 'Password1'), True)
 
     def testInputValidation(self):
-        table = self.db.outputTable('users', 'dksilv4')
+        table = self.db.outputTable('users')
         try:
             if table[1][0] == 2 and table[1][1] == "Diogo":
                 print('\n' + self.testInputValidation.__name__.upper())
@@ -102,13 +103,13 @@ class Test(unittest.TestCase):
                 print('\n' + self.testInputValidation.__name__.upper())
                 self.register.inputValidation('Diogo', 'da Silva', 'dksilva', 'd@d.com', 'd@d.com', 'Password1',
                                               'Password1')
-                print(self.db.outputTable('users', 'dksilv4'))
+                print(self.db.outputTable('users'))
 
         except:
             print('\n' + self.testInputValidation.__name__.upper())
             self.register.inputValidation('Diogo', 'da Silva', 'dksilva', 'd@d.com', 'd@d.com', 'Password1',
                                           'Password1')
-            print(self.db.outputTable('users', 'dksilv4'))
+            print(self.db.outputTable('users'))
 
     def testIsInfoInDB(self):
         self.assertEqual(self.db.isInfoInUsers('username', 'dksilv4'), True)
@@ -126,3 +127,9 @@ class Test(unittest.TestCase):
         self.assertEqual(maleName in maleNames, True)
         self.assertEqual(femaleName in femaleNames, True)
 
+    def testGameLoadPopulation(self):
+        self.game.loadPopulation()
+        testHuman = self.game.population[0]
+        self.assertEqual(testHuman.forename,'Diogo')
+        self.assertEqual(testHuman.surname, 'da Silva')
+        self.assertEqual(testHuman.age, 18)

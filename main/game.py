@@ -7,18 +7,19 @@ import random
 
 
 class DB:
-    def __init__(self):
-        pass
+    username = None
+    def __init__(self, username):
+        self.username = username
 
     def reset(self):
         try:
             self.addUserTable()
             self.addUserSampleData()
-            self.addHumanTable('dksilv4')
+            self.addHumanTable()
         except:
             pass
 
-    def outputTable(self, db, username=None):
+    def outputTable(self, db):
         if db == 'users':
             conn = sqlite3.connect(r"../db/users.db")
             con = conn.cursor()
@@ -27,14 +28,14 @@ class DB:
             return output
         if db == 'Humans':
             try:
-                conn = sqlite3.connect(r"../db/" + username + ".db")
+                conn = sqlite3.connect(r"../db/" + self.username + ".db")
                 con = conn.cursor()
                 output = con.execute('''SELECT * FROM Humans''').fetchall()
                 conn.close()
                 return output
             except:
-                self.addHumanTable(username)
-                self.outputTable(db, username)
+                self.addHumanTable()
+                self.outputTable(db)
 
     def addUserTable(self):
         try:
@@ -59,9 +60,9 @@ class DB:
         conn.commit()
         conn.close()
 
-    def addHumanTable(self, username):
+    def addHumanTable(self):
         try:
-            conn = sqlite3.connect(r"../db/" + username + ".db")
+            conn = sqlite3.connect(r"../db/" + str(self.username) + ".db")
             con = conn.cursor()
             con.execute("""CREATE TABLE IF NOT EXISTS Humans (
             HumanID integer PRIMARY KEY,
@@ -112,15 +113,17 @@ class DB:
 
     @staticmethod
     def humanUpdateValue(column, newValue, nameColumn, humanName, ):
-        conn = sqlite3.connect(r"../db/" + username + ".db")
+        conn = sqlite3.connect(r"../db/" + self.username + ".db")
         con = conn.cursor()
         query = """UPDATE Humans SET {} = {} WHERE {} = {}""".format(column, newValue, nameColumn, humanName)
 
 
 class Login:
-    def __init__(self):
-        self.verified = False
+    verified = False
+    username = None
+    def __init__(self, username=None):
         self.username = None
+        self.getCredentials()
 
     def checkCredentials(self, username, password):
         try:
@@ -135,18 +138,25 @@ class Login:
         except Exception:
             return False
 
-    def getCredentials(self):
-        self.username = input("Please enter your username: ")
-        password = input("Please enter your password: ")
-        self.verified = self.checkCredentials(self.username, password)
-        if self.verified:
-            self.populationDB(self.username)
+    def getCredentials(self, username=None, password=None):
+        if username and password == None:
+            user = input("Please enter your username: ")
+            pw = input("Please enter your password: ")
+            self.verified = self.checkCredentials(user, pw)
+            if self.verified:
+                self.username = user
+                self.populationDB()
+        else:
+            self.verified = self.checkCredentials(username, password)
+            if self.verified:
+                self.username = username
 
-    def populationDB(self, username):
-        if os.path.isfile("../db/" + username + ".db"):
+
+    def populationDB(self):
+        if os.path.isfile("../db/" + str(self.username) + ".db"):
             pass
         else:
-            DB().addHumanTable(username)
+            DB(self.username).addHumanTable()
 
 
 class Register:
@@ -238,7 +248,7 @@ class Register:
         if len(username) < 3:
             return 'NoLen'
         else:
-            if DB().isInfoInUsers('username', username):
+            if DB(self.username).isInfoInUsers('username', username):
                 return 'Taken'
             else:
                 return True
@@ -247,7 +257,7 @@ class Register:
         from validate_email import validate_email
         if validate_email(email):
             if email == emailVer:
-                if DB().isInfoInUsers('email', email):
+                if DB(self.username).isInfoInUsers('email', email):
                     return 'Used'
                 else:
                     return True
@@ -273,27 +283,28 @@ class Register:
 
 
 class Human:
-    # def __init__(self, forename, surname, age, dob, gender, mother, father, married=None):
-    #     self.forename = forename
-    #     self.surname = surname
-    #     self.age = age
-    #     self.dob = dob
-    #     self.gender = gender
-    #     self.married = married
-    #     self.mother = mother
-    #     self.father = father
-    def __init__(self, mother=0, father=0, married=0):
-        self.db = DB()
-        self.gender = self.getGender()
-        self.forename, self.surname = self.newName(self.gender)
-        self.age = 0
-        self.dob = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+
+    def __init__(self, forename=None, surname=None, age=0, dob=None,gender=None, mother=None, father=None, married=None):
+        self.forename = forename
+        self.surname = surname
+        self.age = age
+        self.dob = dob
+        self.gender = gender
+        self.mother = mother
+        self.father = father
+        self.married = married
+        if gender == None:
+            self.gender = self.getGender()
+        if forename == None and surname == None:
+            self.forename, self.surname = self.newName(self.gender)
+        if dob == None:
+            self.dob = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
         self.mother = mother
         self.father = father
         self.married = married
 
     def newHuman(self):
-        self.db.newHuman(username,
+        db.newHuman(username,
                          [self.forename, self.surname, self.surname, self.age, self.dob, self.gender, self.mother,
                           self.father, self.married])
 
@@ -302,7 +313,6 @@ class Human:
             self.db.newHuman(None, [None])
 
     def marry(self):
-
         pass
 
     def readNameCSV(self):
@@ -324,8 +334,8 @@ class Human:
 
     def newName(self, gender):
         maleNames, femaleNames, surnames = self.readNameCSV()
-        randomInt = random.randint(0, len(maleNames))
-        randomInt2 = random.randint(0, len(surnames))
+        randomInt = random.randint(0, len(maleNames)-1)
+        randomInt2 = random.randint(0, len(surnames)-1)
         if gender == 'male':
             return maleNames[randomInt], surnames[randomInt2]
         if gender == 'female':
@@ -337,9 +347,25 @@ class Human:
 
 
 class Game:
-    pass
+    username = None
+    population = []
+
+    def __init__(self, username):
+        self.username = username
+        self.db = DB(username)
+
+
+    def loadPopulation(self):
+        humans = self.db.outputTable('Humans')
+        for human in humans:
+            self.population.append(Human(human[1],human[2],human[3],human[4],human[5],human[6], human[7],human[8]))
+
 
 
 if __name__ == '__main__':
     login = Login()
     username = login.username
+    verified = login.verified
+    if verified:
+        db = DB(username)
+        Game(username)
