@@ -4,10 +4,10 @@ from sqlite3 import Error
 import csv
 import datetime
 import random
+import kivy
 
 
 class DB:
-    username = None
     def __init__(self, username):
         self.username = username
 
@@ -28,7 +28,7 @@ class DB:
             return output
         if db == 'Humans':
             try:
-                conn = sqlite3.connect(r"../db/" + self.username + ".db")
+                conn = sqlite3.connect(r"../db/" + str(self.username) + ".db")
                 con = conn.cursor()
                 output = con.execute('''SELECT * FROM Humans''').fetchall()
                 conn.close()
@@ -91,8 +91,8 @@ class DB:
         conn.commit()
         conn.close()
 
-    def newHuman(self, username, human):
-        conn = sqlite3.connect(r"../db/" + username + ".db")
+    def newHuman(self, human):
+        conn = sqlite3.connect(r"../db/" + self.username + ".db")
         con = conn.cursor()
         query = "INSERT INTO Humans(Forename,Surname,Age,DOB,Gender,Married,Mother,Father) VALUES(?, ?,?,?,?,?,?,?)"
         con.execute(query,
@@ -111,6 +111,18 @@ class DB:
         else:
             return True
 
+    def getHuman(self):
+        pass
+
+    def getUserInfo(self, info):
+        if info == 'name':
+            query = """SELECT Forename, Surname FROM users WHERE username =?"""
+        conn = sqlite3.connect(r"../db/users.db")
+        con = conn.cursor()
+        data = con.execute(query, (self.username,)).fetchall()
+        conn.close()
+        return data
+
     @staticmethod
     def humanUpdateValue(column, newValue, nameColumn, humanName, ):
         conn = sqlite3.connect(r"../db/" + self.username + ".db")
@@ -121,9 +133,12 @@ class DB:
 class Login:
     verified = False
     username = None
+    db = None
+
     def __init__(self, username=None):
-        self.username = None
-        self.getCredentials()
+        self.username = username
+        self.db = DB(username)
+        # self.getCredentials()
 
     def checkCredentials(self, username, password):
         try:
@@ -139,7 +154,7 @@ class Login:
             return False
 
     def getCredentials(self, username=None, password=None):
-        if username and password == None:
+        if username == None and password == None:
             user = input("Please enter your username: ")
             pw = input("Please enter your password: ")
             self.verified = self.checkCredentials(user, pw)
@@ -151,12 +166,23 @@ class Login:
             if self.verified:
                 self.username = username
 
-
     def populationDB(self):
         if os.path.isfile("../db/" + str(self.username) + ".db"):
             pass
         else:
-            DB(self.username).addHumanTable()
+            newPeople = [['Adam', '', '18', '00-00-0000', 'male', 0, 1, 1],
+                         ['Eve', '', '18', '00-00-0000', 'male', 0, 1, 1]]
+
+            self.db.addHumanTable()
+            for people in newPeople:
+                self.db.newHuman(people)
+
+    def giveFeedback(self, info):
+        if info == True:
+            output = "Welcome {}!".format(' '.join(self.db.getUserInfo('name')[0]))
+        print(output)
+        return output
+
 
 
 class Register:
@@ -235,7 +261,7 @@ class Register:
             self.email = email
             self.username = username
             self.password = password
-            DB().newUser(self.forename, self.surname, self.username, self.email, self.password)
+            DB(self.username).newUser(self.forename, self.surname, self.username, self.email, self.password)
         return verified
 
     def checkName(self, name):
@@ -284,7 +310,9 @@ class Register:
 
 class Human:
 
-    def __init__(self, forename=None, surname=None, age=0, dob=None,gender=None, mother=None, father=None, married=None):
+    def __init__(self, id=0, forename=None, surname=None, age=0, dob=None, gender=None, mother=None, father=None,
+                 married=None):
+        self.id = id
         self.forename = forename
         self.surname = surname
         self.age = age
@@ -305,15 +333,28 @@ class Human:
 
     def newHuman(self):
         db.newHuman(username,
-                         [self.forename, self.surname, self.surname, self.age, self.dob, self.gender, self.mother,
-                          self.father, self.married])
+                    [self.forename, self.surname, self.surname, self.age, self.dob, self.gender, self.mother,
+                     self.father, self.married])
 
     def __add__(self, mother, father):
         if mother.married == father.married:
-            self.db.newHuman(None, [None])
+            name = input("Please input the new human's name: ")
+            surname = father.surname
+            age = 0
+            dob = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+            gender = self.getGender()
+            mother = mother
+            father = father
+            db.newHuman([None])
 
     def marry(self):
         pass
+
+    def divorce(self):
+        conn = sqlite3.connect(r"../db/" + self.username + ".db")
+        con = conn.cursor()
+        query = "UPDATE"
+
 
     def readNameCSV(self):
         with open('../csv/names.csv', newline='') as csvfile:
@@ -334,8 +375,8 @@ class Human:
 
     def newName(self, gender):
         maleNames, femaleNames, surnames = self.readNameCSV()
-        randomInt = random.randint(0, len(maleNames)-1)
-        randomInt2 = random.randint(0, len(surnames)-1)
+        randomInt = random.randint(0, len(maleNames) - 1)
+        randomInt2 = random.randint(0, len(surnames) - 1)
         if gender == 'male':
             return maleNames[randomInt], surnames[randomInt2]
         if gender == 'female':
@@ -347,18 +388,38 @@ class Human:
 
 
 class Game:
-    username = None
     population = []
 
     def __init__(self, username):
         self.username = username
         self.db = DB(username)
+        self.loadPopulation()
 
 
     def loadPopulation(self):
         humans = self.db.outputTable('Humans')
         for human in humans:
-            self.population.append(Human(human[1],human[2],human[3],human[4],human[5],human[6], human[7],human[8]))
+            self.population.append(
+                Human(human[0], human[1], human[2], human[3], human[4], human[5], human[6], human[7], human[8]))
+
+    @property
+    def showPopulation(self):
+        for human in self.population:
+            return ('{} {}\n '
+                  '>Age: {} \n'
+                  ' >Date of Birth: {}\n'
+                  ' >Gender: {}\n'
+                  ' >Mother: {}\n'
+                  ' >Father: {}\n'
+                  ' >Married to: {}\n'
+                  '\n'.format(human.forename, human.surname, human.age, human.dob, human.gender, human.mother,
+                              human.father, human.married))
+
+    def updateHumanDB(self):
+        pass
+
+    def updateHumanAge(self):
+        pass
 
 
 
