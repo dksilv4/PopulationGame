@@ -1,4 +1,4 @@
-import main.game as game
+import main.main as game
 import unittest
 import os
 

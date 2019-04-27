@@ -4,7 +4,6 @@ from sqlite3 import Error
 import csv
 import datetime
 import random
-import kivy
 
 
 class DB:
