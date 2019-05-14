@@ -1,8 +1,20 @@
-import tkinter
+import tkinter as tk
+true = True
+class FullScreenApp(object):
+    def __init__(self, master, **kwargs):
+        self.master=master
+        pad=3
+        self._geom='200x200+0+0'
+        master.geometry("{0}x{1}+0+0".format(
+            master.winfo_screenwidth()-pad, master.winfo_screenheight()-pad))
+        master.bind('<Escape>',self.toggle_geom)
+    def toggle_geom(self,event):
+        geom=self.master.winfo_geometry()
+        print(geom,self._geom)
+        self.master.geometry(self._geom)
+        self._geom=geom
 
-window = tkinter.Tk()
-# to rename the title of the window
-window.title("GUI")
-# pack is used to show the object in the window
-label = tkinter.Label(window, text = "Hello World!").pack()
-window.mainloop()
+root=tk.Tk()
+app=FullScreenApp(root)
+root.wm_attributes('-fullscreen', true)
+root.mainloop()
