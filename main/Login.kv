@@ -13,25 +13,6 @@
             source: "../images/galaxy.jpg"
 
 
-
-    BoxLayout:
-        size_hint_y: None
-        height: 40
-        Label:
-            text: ' Login'
-            size_hint_x:0.95
-        FlatButton:
-            size_hint_x: 0.04
-            on_press: root.exit()
-            Image:
-                source: '../images/close.png'
-                y: self.parent.y
-                x: self.parent.x
-                size: 40, 40
-                allow_stretch: True
-                color: (1,1,1,0.5)
-
-
     BoxLayout:
         orientation: 'vertical'
         padding: loginWin.space_x, 10
@@ -78,11 +59,11 @@
                 size_hint_y: None
                 height: 50
                 size_hint_x: None
-                width: 162
+                width: 167
                 text: 'Sign In'
                 background_color: (1,.1,.1,.3)
                 background_normal: ''
-                on_press: root.validateUser()
+                on_press: root.test()
             Label:
                 id:sp1
             Button:#Register Button
@@ -97,6 +78,8 @@
 
         Label:
             id: sp
+            size_hint_y:1
+
 
 
 <RegisterWindow>
@@ -107,24 +90,8 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            source: "../images/galaxy.jpg"
+            source: "../images/colormix.jpg"
 
-    BoxLayout:
-        size_hint_y: None
-        height: 50
-        Label:
-            text: 'Register'
-            size_hint_x: 1
-        FlatButton:
-            size_hint_x: 0.03
-            on_press: root.exit()
-            Image:
-                source: '../images/close.png'
-                y: self.parent.y +3
-                x: self.parent.x -10
-                size: 40, 40
-                allow_stretch: True
-                color: (1,1,1,0.5)
     Button:
         text: 'back'
         size_hint_x:0.1
@@ -137,16 +104,43 @@
         orientation: 'vertical'
         padding: registerWin.space_x, 10
         background_color: (1,1,0,1)
+        size_hint_y:1
         Label:
             id: info
             text: ''
             markup: True
             size_hint_y: None
-            spacing:20
         BoxLayout:
             orientation: 'vertical'
+            spacing: 10
             TextInput:
-                id: test
+                size_hint: (1, None)
+                height: 50
+                id: forenameInput
+                hint_text: 'First Name'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: surnameInput
+                hint_text: 'Surname'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: usernameInput
                 hint_text: 'Username'
                 multiline: False
                 focus: True
@@ -155,11 +149,127 @@
                 border: (0,0,0,0)
                 foreground_color: (1,1,1,1)
                 hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: emailInputOne
+                hint_text: 'Email'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: emailInputTwo
+                hint_text: 'Re-enter Email'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: passwordInputOne
+                hint_text: 'Password'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            TextInput:
+                size_hint: (1, None)
+                height: 50
+                id: passwordInputTwo
+                hint_text: 'Re-enter Password'
+                multiline: False
+                focus: True
+#                on_text_validate: pwdField.focus = True
+                background_color: (0,0,0,.4)
+                border: (0,0,0,0)
+                foreground_color: (1,1,1,1)
+                hint_text_color: (1,1,1,.7)
+            BoxLayout:
+                Button:
+
+                    size_hint: (1, None)
+                    height: 50
+                    text: 'Register'
+                    background_color: (1,.1,.1,.2)
+                    background_normal: ''
+                    on_press: None
 
     BoxLayout:
         size_hint_y:0.3
 <Game>:
-    canvas:
+
+    BoxLayout:
+        width: 200
+        size_hint_x: 1
+        size_hint_y:0.1
+        padding: 0,
+        Button:
+            text: 'back'
+            size_hint_x:1
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x:None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x:None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x:None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x: None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x:None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+        Button:
+            text: 'back'
+            size_hint_x:None
+            size_hint_y: None
+            height:50
+            background_color: (0,0,0,.5)
+            on_press: None
+    BoxLayout:
+        size_hint_y: 0.9
+
+
+
 
 
 <DragLabel>:

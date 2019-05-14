@@ -9,23 +9,21 @@ from kivy.uix.behaviors import DragBehavior
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
 from kivy.properties import ObjectProperty, NumericProperty
 from kivy.uix.label import Label
-
 import time
-Config.set('graphics', 'fullscreen', 'fake')
+
+Config.set('graphics', 'fullscreen', 0)
 Config.set('graphics', 'position', 'auto')
-Config.set('graphics', 'width', '500')
-Config.set('graphics', 'height', '250')
 Config.set('graphics', 'resizable', False)
-Config.set('kivy', 'exit_on_escape',1)
+Config.set('kivy', 'exit_on_escape', 1)
 kivy.require('1.0.0')
 from kivy.core.window import Window
 
 
 class SignInWindow(BoxLayout, Screen):
     username = None
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
 
     def validateUser(self):
         user = self.ids.usernameField
@@ -43,12 +41,15 @@ class SignInWindow(BoxLayout, Screen):
             self.populationDB()
             self.manager.current = 'game'
             time.sleep(.4)
-            Window.fullscreen = True
+            Window.maximize()
+            Window.fullscreen = 'auto'
 
-
+    def test(self):
+        Window.maximize()
+        self.manager.current = 'game'
 
     def checkCredentials(self, username, password):
-        if username =='' or password == '':
+        if username == '' or password == '':
             return None
         try:
             conn = sqlite3.connect(r"../db/users.db")
@@ -107,13 +108,13 @@ class SignInWindow(BoxLayout, Screen):
 
     def switchToRegister(self):
         self.manager.current = 'register'
-        registerWinSizeX, registerWinSizeY = 600, 350
+        registerWinSizeX, registerWinSizeY = 600, 450
         Window.size = (registerWinSizeX, registerWinSizeY)
 
     def exit(self):
-        from kivy.core.window import Window
         App.get_running_app().stop()
         Window.close()
+
 
 class RegisterWindow(BoxLayout, Screen):
     def __init__(self, **kwargs):
@@ -129,26 +130,22 @@ class RegisterWindow(BoxLayout, Screen):
 
 
 class Game(BoxLayout, Screen):
-    def setUp(self):
-        Window.fullscreen = True
-
-
-class DragLabel(DragBehavior, Label):
     pass
 
-class Manager(ScreenManager):
 
+class Manager(ScreenManager):
     Login = ObjectProperty(None)
     Register = ObjectProperty(None)
     Game = ObjectProperty(None)
 
+
 class LoginApp(App):
     def build(self):
-        m = Manager(transition=SlideTransition())
-        Window.borderless = True
-        return m
+        Window.size = (600, 450)
+        Window.clearcolor = (1, 1, 1, 1)
+        Window.borderless = False
+        return Manager(transition=SlideTransition())
 
 
 if __name__ == '__main__':
     LoginApp().run()
-
