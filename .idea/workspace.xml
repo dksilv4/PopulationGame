@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="228fac42-ce22-4e3e-987c-3635d4be68d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tkinter test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tkinter test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +65,7 @@
     <session id="-960730897">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.2" value="1" />
@@ -101,16 +100,16 @@
           <entry key="dummy" value="61" />
           <entry key="kv" value="4681" />
           <entry key="md" value="7" />
-          <entry key="py" value="29100" />
-          <entry key="txt" value="1743" />
+          <entry key="py" value="29125" />
+          <entry key="txt" value="1863" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Kivy" value="4681" />
           <entry key="Markdown" value="7" />
-          <entry key="PLAIN_TEXT" value="1805" />
-          <entry key="Python" value="29123" />
+          <entry key="PLAIN_TEXT" value="1925" />
+          <entry key="Python" value="29148" />
           <entry key="SQL" value="35" />
         </counts>
       </usages-collector>
@@ -663,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557862286213</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Added tkinter test app onto the test folder to test if its possible for tkinter to be completely full screen.">
+      <created>1557862699172</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1557862699172</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -717,7 +723,7 @@
       <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32932165" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32881" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.498779" visible="true" weight="0.2713348" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.498779" weight="0.2713348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39824945" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -770,7 +776,8 @@
     <MESSAGE value="&#10;other things added" />
     <MESSAGE value="Added UI for login and partially registration using kivy." />
     <MESSAGE value="Added some more features on the ui." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some more features on the ui." />
+    <MESSAGE value="Added tkinter test app onto the test folder to test if its possible for tkinter to be completely full screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tkinter test app onto the test folder to test if its possible for tkinter to be completely full screen." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py" />
@@ -930,6 +937,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main/Login.kv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="260" column="8" lean-forward="true" selection-start-line="260" selection-start-column="8" selection-end-line="260" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -939,13 +953,6 @@
             <marker date="1556235924277" expanded="true" signature="137:176" ph="..." />
             <marker date="1556235924277" expanded="true" signature="3802:4144" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/Login.kv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="260" column="8" lean-forward="true" selection-start-line="260" selection-start-column="8" selection-end-line="260" selection-end-column="8" />
         </state>
       </provider>
     </entry>
